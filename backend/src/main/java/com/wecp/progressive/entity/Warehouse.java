@@ -1,56 +1,80 @@
 package com.wecp.progressive.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Warehouse implements Comparable<Warehouse> {
-    int warehouseId;
-    int supplierId;
-    String warehouseName;
-    String location;
-    int capacity;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int warehouseId;
     
-    public Warehouse(int warehouse_id, int supplier_id, String warehouse_name, String location, int capacity) {
-        this.warehouseId = warehouse_id;
-        this.supplierId = supplier_id;
-        this.warehouseName = warehouse_name;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "supplierId")
+    private Supplier supplier;
+    private String warehouseName;
+    private String location;
+    private int capacity;
+
+    public Warehouse() {
+    }
+
+    public Warehouse(int warehouseId, int supplierId, String warehouseName, String location, int capacity) {
+        this.warehouseId = warehouseId;
+        this.supplier.setSupplierId(supplierId);
+        this.warehouseName = warehouseName;
         this.location = location;
         this.capacity = capacity;
     }
-    public Warehouse () {}
+
     public int getWarehouseId() {
         return warehouseId;
     }
-    public void setWarehouseId(int warehouse_id) {
-        this.warehouseId = warehouse_id;
+
+    public void setWarehouseId(int warehouseId) {
+        this.warehouseId = warehouseId;
     }
-    public int getSupplierId() {
-        return supplierId;
+
+    public Supplier getSupplier() {
+        return supplier;
     }
-    public void setSupplierId(int supplier_id) {
-        this.supplierId = supplierId;
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
     }
+
     public String getWarehouseName() {
         return warehouseName;
     }
-    public void setWarehouseName(String warehouse_name) {
-        this.warehouseName = warehouse_name;
+
+    public void setWarehouseName(String warehouseName) {
+        this.warehouseName = warehouseName;
     }
+
     public String getLocation() {
         return location;
     }
+
     public void setLocation(String location) {
         this.location = location;
     }
+
     public int getCapacity() {
         return capacity;
     }
+
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
     @Override
-    public int compareTo(Warehouse o) {
-        // TODO Auto-generated method stub
-        return this.capacity - o.getCapacity();
+    public int compareTo(Warehouse otherWarehouse) {
+        return Double.compare(otherWarehouse.getCapacity(), this.getCapacity());
     }
-
-    
-
 }

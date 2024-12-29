@@ -2,35 +2,39 @@ package com.wecp.progressive.service.impl;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
 
 import com.wecp.progressive.entity.Warehouse;
 import com.wecp.progressive.service.WarehouseService;
 
-public class WarehouseServiceImplArraylist implements WarehouseService  {
+@Service
+public class WarehouseServiceImplArraylist implements WarehouseService {
 
-    public List<Warehouse> wareHouseList = new ArrayList<>();
+    private static List<Warehouse> warehouseList = new ArrayList<>();
 
     @Override
     public List<Warehouse> getAllWarehouses() {
-        // TODO Auto-generated method stub
-        return wareHouseList;
+        return warehouseList;
     }
 
     @Override
     public int addWarehouse(Warehouse warehouse) {
-        // TODO Auto-generated method stub
-        wareHouseList.add(warehouse);
-        return wareHouseList.size();
+        warehouseList.add(warehouse);
+        return warehouseList.size();
     }
 
     @Override
     public List<Warehouse> getWarehousesSortedByCapacity() {
-        // TODO Auto-generated method stub
-        Collections.sort(wareHouseList);
-        return wareHouseList;
+        List<Warehouse> sortedWarehouses = warehouseList;
+        sortedWarehouses.sort(Comparator.comparing(Warehouse::getCapacity));
+        return sortedWarehouses;
     }
 
+    @Override
+    public void emptyArrayList() {
+        warehouseList = new ArrayList<>();
+    }
 }
-
