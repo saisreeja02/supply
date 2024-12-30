@@ -6,7 +6,7 @@ import com.wecp.progressive.entity.Insurance;
 import com.wecp.progressive.service.InsuranceService;
 
 public class InsuranceServiceImpl implements InsuranceService  {
-
+    
     @Override
     public List<Insurance> getAllInsurances() {
         // TODO Auto-generated method stub

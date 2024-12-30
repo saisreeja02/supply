@@ -6,18 +6,20 @@ public class Product  {
     String productName;
     String productDescription;
     int quantity;
-    double price;
-    public int getProductId() {
-        return productId;
-    }
+    Long price;
+    
+    public Product () {}
     public Product(int productId, int warehouseId, String productName, String productDescription, int quantity,
-            double price) {
+    Long price) {
         this.productId = productId;
         this.warehouseId = warehouseId;
         this.productName = productName;
         this.productDescription = productDescription;
         this.quantity = quantity;
         this.price = price;
+    }
+    public int getProductId() {
+        return productId;
     }
     public void setProductId(int productId) {
         this.productId = productId;
@@ -46,10 +48,10 @@ public class Product  {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    public double getPrice() {
+    public Long getPrice() {
         return price;
     }
-    public void setPrice(double price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
     

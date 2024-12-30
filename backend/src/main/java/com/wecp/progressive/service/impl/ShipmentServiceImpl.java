@@ -7,6 +7,7 @@ import com.wecp.progressive.service.ShipmentService;
 
 public class ShipmentServiceImpl implements ShipmentService  {
 
+
     @Override
     public List<Shipment> getAllShipments() {
         // TODO Auto-generated method stub
