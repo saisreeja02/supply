@@ -1,5 +1,7 @@
 package com.wecp.progressive.service.impl;
 
+import java.sql.SQLException;
+import java.util.Comparator;
 import java.util.List;
 
 import com.wecp.progressive.dao.SupplierDAO;
@@ -15,21 +17,38 @@ public class SupplierServiceImplJdbc implements SupplierService  {
     }
 
     @Override
-    public List<Supplier> getAllSuppliers() {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Supplier> getAllSuppliers() throws SQLException {
+        return supplierDAO.getAllSuppliers();
     }
 
     @Override
-    public int addSupplier(Supplier supplier) {
-        // TODO Auto-generated method stub
-        return 0;
+    public int addSupplier(Supplier supplier) throws SQLException {
+        return supplierDAO.addSupplier(supplier);
     }
 
     @Override
-    public List<Supplier> getAllSuppliersSortedByName() {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Supplier> getAllSuppliersSortedByName() throws SQLException {
+        List<Supplier> sortedSuppliers = supplierDAO.getAllSuppliers();
+        if (sortedSuppliers != null) {
+            sortedSuppliers.sort(Comparator.comparing(Supplier::getSupplierName)); // Sort by supplier name
+        }
+        return sortedSuppliers;
+    }
+
+    @Override
+    public void updateSupplier(Supplier supplier) throws SQLException {
+        supplierDAO.updateSupplier(supplier);
+    }
+
+    @Override
+    public void deleteSupplier(int supplierId) throws SQLException {
+        supplierDAO.deleteSupplier(supplierId);
+    }
+
+    @Override
+    public Supplier getSupplierById(int supplierId) throws SQLException {
+        return supplierDAO.getSupplierById(supplierId);
     }
     
 }
+

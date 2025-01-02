@@ -1,5 +1,6 @@
 package com.wecp.progressive.service.impl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.wecp.progressive.dao.ProductDAO;
@@ -15,31 +16,29 @@ public class ProductServiceImplJdbc implements ProductService  {
     }
 
     @Override
-    public List<Product> getAllProducts() {
-        // TODO Auto-generated method stub
-        return List.of();
+    public List<Product> getAllProducts() throws SQLException {
+        return productDAO.getAllProducts();
     }
 
     @Override
-    public Product getProductById(int productId) {
-        // TODO Auto-generated method stub
-        return null;
+    public Product getProductById(int productId) throws SQLException {
+        return productDAO.getProductById(productId);
     }
 
     @Override
-    public int addProduct(Product product) {
-        // TODO Auto-generated method stub
-        return -1;
+    public int addProduct(Product product) throws SQLException {
+        return productDAO.addProduct(product);
     }
 
     @Override
-    public void updateProduct(Product product) {
-        // TODO Auto-generated method stub
+    public void updateProduct(Product product) throws SQLException {
+        productDAO.updateProduct(product);
     }
 
     @Override
-    public void deleteProduct(int productId) {
-        // TODO Auto-generated method stub
+    public void deleteProduct(int productId) throws SQLException {
+       productDAO.deleteProduct(productId);
     }
+
 
 }

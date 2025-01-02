@@ -8,11 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
+@Entity
 public class Warehouse implements Comparable<Warehouse> {
 
-    // @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int warehouseId;
     
     // @ManyToOne(cascade = CascadeType.MERGE)
@@ -24,8 +24,18 @@ public class Warehouse implements Comparable<Warehouse> {
 
     public Warehouse() {}
 
+    // Warehouse(int,int,java.lang.String,java.lang.String,int)
+    
+
     public Warehouse(int warehouseId, int supplierId, String warehouseName, String location, int capacity) {
         this.warehouseId = warehouseId;
+        this.supplierId = supplierId;
+        this.warehouseName = warehouseName;
+        this.location = location;
+        this.capacity = capacity;
+    }
+
+    public Warehouse(int supplierId, String warehouseName, String location, int capacity) {
         this.supplierId = supplierId;
         this.warehouseName = warehouseName;
         this.location = location;
