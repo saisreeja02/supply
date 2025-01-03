@@ -1,12 +1,10 @@
 package com.wecp.progressive.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Warehouse implements Comparable<Warehouse> {
@@ -15,8 +13,6 @@ public class Warehouse implements Comparable<Warehouse> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer warehouseId;
     
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "supplierId")
     private Integer supplierId;
     private String warehouseName;
     private String location;

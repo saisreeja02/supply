@@ -17,13 +17,14 @@ public class WarehouseServiceImplJpa implements WarehouseService  {
 
     
     // private WarehouseDAO warehouseDAO;
+    private WarehouseRepository warehouseRepository;
 
-    // public WarehouseServiceImplJpa (WarehouseDAOImpl warehouseDAO)  {
-    //     this.warehouseDAO = warehouseDAO;
-    // }
+    public WarehouseServiceImplJpa (WarehouseRepository warehouseRepository)  {
+        this.warehouseRepository = warehouseRepository;
+    }
 
-    @Autowired
-    WarehouseRepository warehouseRepository;
+    // @Autowired
+    // WarehouseRepository warehouseRepository;
 
     @Override
     public List<Warehouse> getAllWarehouses() throws SQLException{

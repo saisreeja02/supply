@@ -10,7 +10,7 @@ public class Supplier implements Comparable<Supplier> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer supplierId;
+    private int supplierId;
     private String supplierName;
     private String email;
     private String phone;
