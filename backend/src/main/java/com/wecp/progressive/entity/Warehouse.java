@@ -13,11 +13,11 @@ public class Warehouse implements Comparable<Warehouse> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int warehouseId;
+    private Integer warehouseId;
     
-    // @ManyToOne(cascade = CascadeType.MERGE)
-    // @JoinColumn(name = "supplierId")
-    private int supplierId;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "supplierId")
+    private Integer supplierId;
     private String warehouseName;
     private String location;
     private int capacity;
