@@ -1,9 +1,12 @@
 package com.wecp.progressive.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Product  {
@@ -15,6 +18,10 @@ public class Product  {
     String productDescription;
     int quantity;
     long price;
+
+    // @OneToMany(mappedBy = "products", cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
+    Warehouse warehouse;
     
     public Product(int productId, int warehouseId, String productName, String productDescription, int quantity,
             long price) {
@@ -33,6 +40,18 @@ public class Product  {
         this.productDescription = productDescription;
         this.quantity = quantity;
         this.price = price;
+    }
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+    public void setWarehouseId(Integer warehouseId) {
+        this.warehouseId = warehouseId;
+    }
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
     }
     public int getProductId() {
         return productId;
@@ -70,8 +89,4 @@ public class Product  {
     public void setPrice(long price) {
         this.price = price;
     }
-    
-
-
-    
 }
