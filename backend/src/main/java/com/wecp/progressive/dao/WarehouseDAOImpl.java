@@ -22,7 +22,8 @@ public class WarehouseDAOImpl implements WarehouseDAO {
             connection = DatabaseConnectionManager.getConnection();
             String sql = "INSERT INTO warehouse (supplier_id, warehouse_name, location, capacity) VALUES (?, ?, ?, ?)";
             statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-            statement.setInt(1, warehouse.getSupplierId());
+
+            statement.setInt(1, warehouse.getSupplier().getSupplierId());
             statement.setString(2, warehouse.getWarehouseName());
             statement.setString(3, warehouse.getLocation());
             statement.setDouble(4, warehouse.getCapacity());
@@ -85,7 +86,7 @@ public class WarehouseDAOImpl implements WarehouseDAO {
             connection = DatabaseConnectionManager.getConnection();
             String sql = "UPDATE warehouse SET supplier_id =?, warehouse_name =?, location =?, capacity =? WHERE warehouse_id = ?";
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, warehouse.getSupplierId());
+            statement.setInt(1, warehouse.getSupplier().getSupplierId());
             statement.setString(2, warehouse.getWarehouseName());
             statement.setString(3, warehouse.getLocation());
             statement.setInt(4, warehouse.getCapacity());
