@@ -1,5 +1,6 @@
 package com.wecp.progressive.config;
 
+<<<<<<< HEAD
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,3 +29,8 @@ public class Configurations {
         };
     }
 }
+=======
+public class Configurations {
+
+}
+>>>>>>> faa153be23884f0dacdcc5916e85b4199048d011

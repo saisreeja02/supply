@@ -32,12 +32,17 @@ public class ProductController {
             } else {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
+<<<<<<< HEAD
         } catch (Exception e) {
+=======
+        } catch (SQLException e) {
+>>>>>>> faa153be23884f0dacdcc5916e85b4199048d011
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PostMapping
+<<<<<<< HEAD
     public ResponseEntity<?> addProduct(@RequestBody Product product) {
         try {
             int productId = productServiceImplJpa.addProduct(product);
@@ -45,6 +50,14 @@ public class ProductController {
         } catch (Exception e) {
             // Return a generic error message for any other exceptions
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+=======
+    public ResponseEntity<Integer> addProduct(@RequestBody Product product) {
+        try {
+            int productId = productServiceImplJpa.addProduct(product);
+            return new ResponseEntity<>(productId, HttpStatus.CREATED);
+        } catch (SQLException e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+>>>>>>> faa153be23884f0dacdcc5916e85b4199048d011
         }
     }
 
@@ -54,7 +67,11 @@ public class ProductController {
             product.setProductId(productId);
             productServiceImplJpa.updateProduct(product);
             return new ResponseEntity<>(HttpStatus.OK);
+<<<<<<< HEAD
         } catch (Exception e) {
+=======
+        } catch (SQLException e) {
+>>>>>>> faa153be23884f0dacdcc5916e85b4199048d011
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -64,7 +81,11 @@ public class ProductController {
         try {
             productServiceImplJpa.deleteProduct(productId);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+<<<<<<< HEAD
         } catch (Exception e) {
+=======
+        } catch (SQLException e) {
+>>>>>>> faa153be23884f0dacdcc5916e85b4199048d011
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

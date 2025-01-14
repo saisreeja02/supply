@@ -10,7 +10,11 @@ public class Warehouse implements Comparable<Warehouse> {
     private int warehouseId;
     
     @ManyToOne(cascade = CascadeType.MERGE)
+<<<<<<< HEAD
     @JoinColumn(name = "supplier_id")
+=======
+    @JoinColumn(name = "supplierId")
+>>>>>>> faa153be23884f0dacdcc5916e85b4199048d011
     private Supplier supplier;
     private String warehouseName;
     private String location;

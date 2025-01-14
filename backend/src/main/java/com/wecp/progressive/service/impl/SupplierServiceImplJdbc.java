@@ -1,16 +1,27 @@
 package com.wecp.progressive.service.impl;
 
+<<<<<<< HEAD
 import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+=======
+>>>>>>> faa153be23884f0dacdcc5916e85b4199048d011
 import com.wecp.progressive.dao.SupplierDAO;
 import com.wecp.progressive.entity.Supplier;
 import com.wecp.progressive.service.SupplierService;
 
+<<<<<<< HEAD
 public class SupplierServiceImplJdbc implements SupplierService  {
+=======
+import java.sql.SQLException;
+import java.util.Comparator;
+import java.util.List;
+
+public class SupplierServiceImplJdbc implements SupplierService {
+>>>>>>> faa153be23884f0dacdcc5916e85b4199048d011
 
     private SupplierDAO supplierDAO;
 
@@ -51,6 +62,10 @@ public class SupplierServiceImplJdbc implements SupplierService  {
     public Supplier getSupplierById(int supplierId) throws SQLException {
         return supplierDAO.getSupplierById(supplierId);
     }
+<<<<<<< HEAD
     
 }
 
+=======
+}
+>>>>>>> faa153be23884f0dacdcc5916e85b4199048d011

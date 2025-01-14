@@ -1,5 +1,6 @@
 package com.wecp.progressive.controller;
 
+<<<<<<< HEAD
 import com.wecp.progressive.entity.Warehouse;
 import com.wecp.progressive.exception.NoWarehouseFoundForSupplierException;
 import com.wecp.progressive.service.impl.WarehouseServiceImplJpa;
@@ -15,6 +16,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+=======
+import com.wecp.progressive.entity.Product;
+import com.wecp.progressive.entity.Warehouse;
+import com.wecp.progressive.service.impl.WarehouseServiceImplJpa;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+>>>>>>> faa153be23884f0dacdcc5916e85b4199048d011
 
 import java.sql.SQLException;
 import java.util.List;
@@ -26,7 +36,11 @@ public class WarehouseController {
     @Autowired
     WarehouseServiceImplJpa warehouseServiceImplJpa;
 
+<<<<<<< HEAD
         @GetMapping
+=======
+    @GetMapping
+>>>>>>> faa153be23884f0dacdcc5916e85b4199048d011
     public ResponseEntity<List<Warehouse>> getAllWarehouses() throws SQLException {
         List<Warehouse> warehouses = warehouseServiceImplJpa.getAllWarehouses();
         return new ResponseEntity<>(warehouses, HttpStatus.OK);
@@ -78,6 +92,7 @@ public class WarehouseController {
     }
 
     @GetMapping("/supplier/{supplierId}")
+<<<<<<< HEAD
     public ResponseEntity<?> getWarehousesBySupplier(@PathVariable int supplierId) throws SQLException {
         try {
             List<Warehouse> warehouses = warehouseServiceImplJpa.getWarehouseBySupplier(supplierId);
@@ -90,3 +105,10 @@ public class WarehouseController {
         }
     }
 }
+=======
+    public ResponseEntity<List<Warehouse>> getWarehousesBySupplier(@PathVariable int supplierId) throws SQLException {
+        List<Warehouse> warehouses = warehouseServiceImplJpa.getWarehouseBySupplier(supplierId);
+        return new ResponseEntity<>(warehouses, HttpStatus.OK);
+    }
+}
+>>>>>>> faa153be23884f0dacdcc5916e85b4199048d011

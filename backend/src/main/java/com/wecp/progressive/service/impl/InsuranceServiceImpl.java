@@ -1,5 +1,6 @@
 package com.wecp.progressive.service.impl;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,8 @@ public class InsuranceServiceImpl implements InsuranceService  {
         // TODO Auto-generated method stub
         insuranceRepository.deleteById(insuranceId);
     }
+=======
+public class InsuranceServiceImpl  {
+>>>>>>> faa153be23884f0dacdcc5916e85b4199048d011
 
 }

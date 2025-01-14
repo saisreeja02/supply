@@ -1,5 +1,6 @@
 package com.wecp.progressive.entity;
 
+<<<<<<< HEAD
 import javax.persistence.*;
 
 @Entity
@@ -57,4 +58,8 @@ public class Insurance {
     public void setInsuranceCoverageAmount(Long insuranceCoverageAmount) {
         this.insuranceCoverageAmount = insuranceCoverageAmount;
     }
+=======
+public class Insurance {
+
+>>>>>>> faa153be23884f0dacdcc5916e85b4199048d011
 }

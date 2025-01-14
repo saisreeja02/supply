@@ -1,6 +1,7 @@
 package com.wecp.progressive.repository;
 
 
+<<<<<<< HEAD
 import com.wecp.progressive.entity.Shipment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -29,3 +30,7 @@ public interface ShipmentRepository extends JpaRepository<Shipment, Integer> {
     @Query("DELETE FROM Shipment s WHERE s.warehouse.warehouseId in (Select w.warehouseId from Warehouse w where w.supplier.supplierId = :supplierId)")
     void deleteBySupplierId(@Param("supplierId") int supplierId);
 }
+=======
+public interface ShipmentRepository {
+}
+>>>>>>> faa153be23884f0dacdcc5916e85b4199048d011
