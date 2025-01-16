@@ -12,4 +12,5 @@ import { of } from 'rxjs';
 })
 export class SupplierSampleComponent {
   // Component logic goes here
+  supplier : Supplier = new Supplier(1, "John Wane", "johnwane@gmail.com", "9876543210", "texas", "johnewane", "July@101", "USER");
 }
