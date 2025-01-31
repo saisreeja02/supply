@@ -4,6 +4,9 @@ import { CommonModule } from "@angular/common";
 import { SupplyLinkRoutingModule } from "./supplylink-routing.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { ProductComponent } from "./components/product/product.component";
+import { SupplierComponent } from "./components/supplier/supplier.component";
+import { WarehouseComponent } from "./components/warehouse/warehouse.component";
 
 @NgModule({
   declarations: [],
@@ -12,6 +15,9 @@ import { HttpClientModule } from "@angular/common/http";
     SupplyLinkRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ProductComponent,
+    SupplierComponent,
+    WarehouseComponent
   ],
   exports: [
     

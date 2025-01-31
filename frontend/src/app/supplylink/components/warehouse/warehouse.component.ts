@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Observable, of } from "rxjs";
+import { AbstractControl, FormBuilder, FormGroup, NgControlStatus, ValidationErrors, Validators } from "@angular/forms";
+import { map, Observable, of } from "rxjs";
+import { SupplyLinkService } from "../../services/supplylink.service";
 
 @Component ({
     selector : 'app-warehouse',
@@ -14,17 +15,17 @@ export class WarehouseComponent {
   warehouseError$: Observable<string>;
   warehouseSuccess$: Observable<string>;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private service : SupplyLinkService) {
     this.warehouseError$ = of('');
     this.warehouseSuccess$ = of('');
   }
 
   ngOnInit(): void {
     this.warehouseForm = this.fb.group({
-      supplierId: ['', [Validators.required]],
-      warehouseName: ['', Validators.required],
+      supplierId: ['', [Validators.required, this.validateSupplier]],
+      warehouseName: ['', Validators.required, this.simulateBackendError],
       location : ['', [Validators.required]],
-      capacity: [0, [Validators.required, Validators.min(0)]]
+      capacity: [0, [Validators.required, this.validateNonNegativeCapacity]]
     });
   }
 
@@ -41,4 +42,30 @@ export class WarehouseComponent {
     }
   }
 
+  validateSupplier (controls : AbstractControl) : ValidationErrors | null {
+    if(controls.value == null) {
+      return {null : false} 
+    }
+    return { null : true};
+  }
+
+  validateNonNegativeCapacity(controls : AbstractControl) :ValidationErrors | null {
+    if(controls.value < 0)
+        return { negative : true};
+    return { negative : false};
+  }
+
+  simulateBackendError(controls : AbstractControl):ValidationErrors | null {
+    return this.service.getAllWarehouses().pipe(
+      map((warehouses) => {
+        warehouses.forEach((warehouse) => {
+          const comparisonResult = warehouse.warehouseName.localeCompare(controls.value);
+          if(comparisonResult) {
+            return {similar : true};
+          }
+        });
+        return {similar : false};
+      })
+    );
+  }
 }

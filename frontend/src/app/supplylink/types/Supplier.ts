@@ -1,5 +1,5 @@
 export class Supplier {
-    public supplierId: number;
+    public supplierId: number | undefined;
     public supplierName: string;
     public email: string;
     public phone: string;

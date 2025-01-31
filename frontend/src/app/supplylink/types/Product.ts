@@ -2,24 +2,18 @@ import { Warehouse } from './Warehouse';
  
 export class Product {
   public productId: number;
-  public warehouseId: string;
+  public warehouse: Warehouse;
   public productName: string;
   public productDescription: string;
   public quantity: number;
   public price: number;
  
-  constructor(productId: number, warehouseId: string, productName: string, productDescription: string, quantity: number, price: number) {
-    this.productId = productId;
-    this.warehouseId = warehouseId;
-    this.productName = productName;
-    this.productDescription = productDescription;
-    this.quantity = quantity;
-    this.price = price;
+  constructor(productId: number, warehouseId: Warehouse, productName: string, productDescription: string, quantity: number, price: number) {
   }
  
   public displayInfo(): void {
     console.log(`Product ID: ${this.productId}`);
-    console.log(`Warehouse ID: ${this.warehouseId}`);
+    console.log(`Warehouse: ${this.warehouse}`);
     console.log(`Product name: ${this.productName}`);
     console.log(`Product description: ${this.productDescription}`);
     console.log(`quantity: ${this.quantity}`);

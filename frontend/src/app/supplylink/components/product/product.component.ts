@@ -21,7 +21,6 @@ export class ProductComponent {
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
-      productId: [0, [Validators.required]],
       warehouseId: ['', [Validators.required, Validators.min(1)]],
       productName: ['', Validators.required],
       productDescription: [''],

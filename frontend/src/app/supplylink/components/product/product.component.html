@@ -1,15 +1,6 @@
 <app-navbar></app-navbar>
 <form (ngSubmit)="onSubmit()" [formGroup]="productForm" class="user-form">
     <div>
-        <label for="productId">Product ID</label>
-        <input id="productId" formControlName="productId" type="text" />
-        <div *ngIf="productForm.get('productId')?.touched && productForm.get('productId')?.invalid">
-          <div class="text-red" *ngIf="productForm.get('productId)?.errors?.required">
-            Product ID is required.
-          </div>
-        </div>
-    </div>
-    <div>
         <label for="warehouseId">Warehouse ID</label>
         <input id="warehouseId" formControlName="warehouseId" type="text" />
         <div *ngIf="productForm.get('warehouseId')?.touched && productForm.get('warehouseId')?.invalid">
