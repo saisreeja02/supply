@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Observable, of } from "rxjs";
 
 @Component ({
     selector : 'app-warehouse',
@@ -9,7 +10,36 @@ import { FormBuilder } from "@angular/forms";
 
 export class WarehouseComponent {
 
-    
-    constructor (private fb : FormBuilder) {}
+  warehouseForm: FormGroup;
+  warehouseError$: Observable<string>;
+  warehouseSuccess$: Observable<string>;
+
+  constructor(private fb: FormBuilder) {
+    this.warehouseError$ = of('');
+    this.warehouseSuccess$ = of('');
+  }
+
+  ngOnInit(): void {
+    this.warehouseForm = this.fb.group({
+      warehouseId: [0, [Validators.required]],
+      supplierId: ['', [Validators.required, Validators.min(0)]],
+      warehouseName: ['', Validators.required],
+      location : ['', [Validators.required]],
+      capacity: [0, [Validators.required, Validators.min(0)]]
+    });
+  }
+
+  onSubmit(): void {
+    if (this.warehouseForm.valid) {
+      const newSupplier = this.warehouseForm.value;
+      console.log('New Supplier:', newSupplier);
+      // Handle form submission, e.g., call a service to save the supplier
+      this.warehouseSuccess$ = of('Supplier added successfully!');
+      this.warehouseError$ = of('');
+    } else {
+      this.warehouseError$ = of('Form is invalid. Please fix the errors and try again.');
+      this.warehouseSuccess$ = of('');
+    }
+  }
 
 }

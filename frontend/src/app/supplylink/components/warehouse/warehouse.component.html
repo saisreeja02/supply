@@ -2,7 +2,7 @@
     <h2>Warehouse</h2>
     <div class="">
         <form action="" [formGroup]="warehouseForm">
-            <div>
+              <div>
                 <label for="warehouseId">Warehouse ID</label>
                 <input id="warehouseId" formControlName="warehouseId" type="text" />
                 <div *ngIf="warehouseForm.get('warehouseId')?.touched && warehouseForm.get('warehouseId')?.invalid">
@@ -28,22 +28,32 @@
               <div>
                 <label for="warehouseName">Warehouse Name:</label>
                 <input id="warehouseName" formControlName="warehouseName" type="text" />
-                <div *ngIf="warehouseForm.get('username')?.touched && warehouseForm.get('username')?.invalid">
-                  <div class="text-red" *ngIf="warehouseForm.get('username')?.errors?.required">
-                    Username is required.
+                <div *ngIf="warehouseForm.get('warehouseName')?.touched && warehouseForm.get('warehouseName')?.invalid">
+                  <div class="text-red" *ngIf="warehouseForm.get('warehouseName')?.errors?.required">
+                    Warehouse Name is required.
                   </div>
                 </div>
               </div>
             
               <div>
-                <label for="password">Password:</label>
-                <input id="password" formControlName="password" type="password" />
-                <div *ngIf="warehouseForm.get('password')?.touched && warehouseForm.get('password')?.invalid">
-                  <div class="text-red" *ngIf="warehouseForm.get('password')?.errors?.required">
-                    Password is required.
+                <label for="location">Location:</label>
+                <input id="location" formControlName="location" type="text" />
+                <div *ngIf="warehouseForm.get('location')?.touched && warehouseForm.get('location')?.invalid">
+                  <div class="text-red" *ngIf="warehouseForm.get('location')?.errors?.required">
+                    Location is required.
                   </div>
-                  <div class="text-red" *ngIf="warehouseForm.get('password')?.errors?.minlength">
-                    Password must be at least 6 characters long.
+                  <div class="text-red" *ngIf="warehouseForm.get('location')?.errors?.minlength">
+                    Location must be at least 6 characters long.
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label for="capacity">Capacity:</label>
+                <input id="capacity" formControlName="capacity" type="text" />
+                <div *ngIf="warehouseForm.get('capacity')?.touched && warehouseForm.get('capacity')?.invalid">
+                  <div class="text-red" *ngIf="warehouseForm.get('capacity')?.errors?.required">
+                    Capacity Name is required.
                   </div>
                 </div>
               </div>
@@ -51,11 +61,11 @@
               <button type="submit">Submit</button>
             </form>
             
-            <div *ngIf="(supplierError$ | async) as supplierError" class="error">
-              {{ supplierError }}
+            <div *ngIf="(warehouseError$ | async) as warehouseError" class="error">
+              {{ warehouseError }}
             </div>
-            <div *ngIf="(supplierSuccess$ | async) as supplierSuccess" class="success">
-              {{ supplierSuccess }}
+            <div *ngIf="(warehouseSuccess$ | async) as warehouseSuccess" class="success">
+              {{ warehouseSuccess }}
             </div>
             
         </form>
