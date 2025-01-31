@@ -21,8 +21,7 @@ export class WarehouseComponent {
 
   ngOnInit(): void {
     this.warehouseForm = this.fb.group({
-      warehouseId: [0, [Validators.required]],
-      supplierId: ['', [Validators.required, Validators.min(0)]],
+      supplierId: ['', [Validators.required]],
       warehouseName: ['', Validators.required],
       location : ['', [Validators.required]],
       capacity: [0, [Validators.required, Validators.min(0)]]
