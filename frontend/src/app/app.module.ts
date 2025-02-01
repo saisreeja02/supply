@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';  
 import { AuthInterceptor } from './auth.interceptors';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { AuthInterceptor } from './auth.interceptors';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule 
+    AppRoutingModule ,
+    ReactiveFormsModule
   ],
   providers: [AuthInterceptor],
   bootstrap: [AppComponent]
