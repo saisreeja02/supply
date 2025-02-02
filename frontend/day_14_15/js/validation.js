@@ -43,7 +43,3 @@ function register() {
     console.log("Register clicked. Name: " + name + ", Email: " + email + ", Username: " + username + ", Password: " + password);
 }
 module.exports = { login, register };
-
-
-
-
